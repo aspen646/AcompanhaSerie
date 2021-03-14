@@ -1,7 +1,10 @@
+import Login from './view/Login';
+import './global.css';
+
 
 function App() {
   return (
-    <h1>o importante é começar</h1>
+    <Login/>
   );
 }
 
