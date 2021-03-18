@@ -1,0 +1,130 @@
+.container {
+  width: 100%;
+  /* max-width: 1120px; */
+  height: 100vh;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+
+  position: relative;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: 700;
+  padding-left: 48px;
+  padding-top: 24px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.box {
+  width: 100%;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+
+}
+
+.right-box, .left-box {
+  background-color: #414141;
+  width: 424px;
+  height: 600px;
+}
+
+.left-box {
+  background-color: grey;
+  border-radius: 8px 0px 0px 8px;
+}
+.right-box {
+  border-radius: 0px 8px 8px 0px;
+}
+
+.right-box h1 {
+  margin: 107px 0px 48px 55px;
+  font-size: 32px;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+
+.formulario input:first-child{
+  margin-bottom: 16px;
+}
+
+.entrarBotao {
+  margin: 48px 0px 13px 0px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #EC625F;
+  cursor: pointer;
+}
+
+.entrarBotao:hover {
+  color: #fff;
+  background-color: #A31D29;
+  transition: 0.5s;
+}
+
+.entrarCampos {
+  padding: 0px 20px 0px 20px;
+  font-size: 14px;
+  background-color: #525252;
+  color: #fff;
+}
+
+
+.entrada {
+  width: 314px;
+  height: 55px;
+  border: 0px;
+  border-radius: 4px;    
+}
+
+.checkbox {
+  width: 314px;
+}
+
+.formulario div {
+  position: relative;
+}
+
+.formulario div label {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #999;
+  transition: .5s;
+  pointer-events: none;
+}
+
+.formulario input:focus ~ label,
+.formulario input:valid ~ label {
+  top: 5px;
+  left: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #f0f0f5;
+
+}
+
+.formulario input {
+  transition: .2s;
+
+}
+/* 
+.formulario input:invalid ~ label{
+  top: 17px;
+  left: 20px;
+} */
