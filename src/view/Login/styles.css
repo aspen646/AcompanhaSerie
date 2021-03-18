@@ -31,16 +31,23 @@
 
 }
 
-.right-box, .left-box {
+.right-box {
   background-color: #414141;
   width: 424px;
   height: 600px;
 }
 
 .left-box {
+  background-color: #414141;
+  /* width: 424px; */
+  height: 600px;
+}
+
+.left-box, .left-box img {
   background-color: grey;
   border-radius: 8px 0px 0px 8px;
 }
+
 .right-box {
   border-radius: 0px 8px 8px 0px;
 }
@@ -58,13 +65,12 @@
   height: auto;
 }
 
-.formulario input:first-child{
+.formulario input[name="email"]{
   margin-bottom: 16px;
 }
 
 .entrarBotao {
   margin: 48px 0px 13px 0px;
-  font-size: 16px;
   font-weight: 700;
   color: #fff;
   background-color: #EC625F;
@@ -94,13 +100,19 @@
 
 .checkbox {
   width: 314px;
+  display: flex;
+  align-items: center;
 }
 
-.formulario div {
+.checkbox label {
+  padding-left: 8px;
+}
+
+.formulario .input-container {
   position: relative;
 }
 
-.formulario div label {
+.formulario div .labelInput {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -109,8 +121,8 @@
   pointer-events: none;
 }
 
-.formulario input:focus ~ label,
-.formulario input:valid ~ label {
+.formulario input:focus ~ .labelInput,
+.formulario input:valid ~ .labelInput {
   top: 5px;
   left: 20px;
   font-size: 12px;
@@ -123,8 +135,3 @@
   transition: .2s;
 
 }
-/* 
-.formulario input:invalid ~ label{
-  top: 17px;
-  left: 20px;
-} */
