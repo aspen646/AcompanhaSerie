@@ -1,25 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header/index';
 import api, {token} from '../../services/api';
 import './styles.css';
 
 export default function Login(){
-  const [poster, setPoster] = useState("https://image.tmdb.org/t/p/original/rqeYMLryjcawh2JeRpCVUDXYM5b.jpg");
-  const [apiData, setApiData] = useState({});
+  const [poster, setPoster] = useState(""); //https://image.tmdb.org/t/p/original/rqeYMLryjcawh2JeRpCVUDXYM5b.jpg
+  const [posterCount, setPosterCount] = useState(0);
+  const [posterArr, setPosterArr] = useState([]);
 
-  function carregarImg(){
-    api.get(`/trending/tv/week?api_key=${token}`)
-        .then((response) => {
-            // newArr.push(response.data);
-            console.log(response.data.results);
-        })
-        .catch((e) => {
-            if(!e.response){
-                return;
-            }
+  useEffect(() => {
+    ( async () => {
+      api.get(`/trending/tv/week?api_key=${token}`)
+      .then((response) => {
+        response.data.results.map((result) => {
+          setPosterArr([... posterArr, result.poster_path]);
+          
         });
+      })
+      .catch((e) => {
+          if(!e.response){
+              return;
+          }
+      });
+    } )()
+  }, []);
+
+  useEffect(() => {
+    ( async () => {
+      await setPoster(`https://image.tmdb.org/t/p/original${posterArr[posterCount]}`);
+      
+    } )()
+  }, [posterCount]);
+
+  function wait(timeout) {
+    return new Promise(resolve => {
+      setTimeout(resolve, timeout);
+    });
   }
-  carregarImg();
+
+
+  // function nextPoster(){
+  //   console.log(newArr.length);
+  //   console.log(posterCount + ' antes');
+  //   if((newArr.length - 1) == posterCount){
+  //     setPosterCount(0);
+  //   }else{
+  //     setPosterCount(posterCount+1);
+  //   }
+  //   console.log(posterCount + ' dps');
+  // }
+
     return(
       <div className="container">
         <div className="logo">
@@ -32,6 +62,7 @@ export default function Login(){
             <img srcSet={poster} alt="" height="600" />
           </div>
           <div className="right-box">
+          {/* <input onClick={nextPoster} className="entrada entrarBotao" type="submit" name="enviar" value="Entrar"/>   */}
             <h1>Entrar</h1>
             <form className="formulario">
               <div className="input-container">
